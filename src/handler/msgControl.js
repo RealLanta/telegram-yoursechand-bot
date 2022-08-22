@@ -16,14 +16,19 @@ export default
     let inline_keyboard = [[{text: yeslabel, callback_data: vars.SUB_REAL}]];
     let reply_to_message_id = (message.message_id) ? message.message_id : message.media[0].message_id;
     let text = lang.get('sub_confirm_tip');
-    if (!message.forward_date) {
+    // 干掉匿名投稿
+    //if (!message.forward_date) {
       // 如果是转发的讯息，则投稿者无权选择匿名
-      inline_keyboard[0].push({ text: lang.get('no'), callback_data: vars.SUB_ANY });
-    } else {
+    //  inline_keyboard[0].push({ text: lang.get('no'), callback_data: vars.SUB_ANY });
+    //} else {
       // 投稿者转发别处的消息，不显示否按钮，并且文案也有所不同
-      text = lang.get('sub_confirm_tip_fwd');
-    }
-    inline_keyboard.push([{ text: lang.get('sub_button_cancel'), callback_data: vars.SUB_CANCEL }]);
+    //  text = lang.get('sub_confirm_tip_fwd');
+    //}
+    
+    //这是小板取消按钮
+    inline_keyboard[0].push({ text: lang.get('sub_button_cancel'), callback_data: vars.SUB_CANCEL });
+    //这是大版取消按钮 
+    //inline_keyboard.push([{ text: lang.get('sub_button_cancel'), callback_data: vars.SUB_CANCEL }]);
     bot.sendMessage(message.chat.id, text, {
       reply_to_message_id,
       reply_markup: { inline_keyboard }
