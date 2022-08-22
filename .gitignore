@@ -12,10 +12,10 @@ yarn-error.log*
 db.json
 
 # Dependency directories
-node_modules/
+#node_modules/
 
 # Production
-dist/
+#dist/
 
 # dotenv environment variables file
 .env
